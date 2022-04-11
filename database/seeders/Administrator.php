@@ -18,6 +18,7 @@ class Administrator extends Seeder
         User::create([
             'name' => 'wilson',
             'email' => 'owenwilson@gmail.com',
+            'role' => 'administrador',
             'password' => Hash::make('12345678')
         ]);
     }
