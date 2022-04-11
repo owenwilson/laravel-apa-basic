@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
-use App\Models\user;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -28,9 +28,13 @@ class LoginController extends Controller
     }
 
     public function dashboard(){
-        if(Auth::check()){
+        $data = User::find(Auth::User()->id);
+        // dd($data['name']);
+        if(Auth::check() && $data['role']=='administrador'){
             $user = User::all();
             return view('modules.dashboard')->with(['users' => $user]);
+        }else if(Auth::check() && $data['role'] == 'estudiante'){
+            return view('modules.users.show')->with(['user_show' => User::findOrFail(Auth::User()->id)]);
         }
         return redirect()->route('sign-in')->with('message', 'No inicio sesion con un usuario registrado');
     }
