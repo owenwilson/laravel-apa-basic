@@ -6,7 +6,7 @@
 			<h1 class="text-dark fw-bolder my-1 fs-2">PROYECTO APA
 			<small class="text-muted fs-6 fw-normal ms-1"></small></h1>
 			<!--end::Heading-->
-			
+
 		</div>
 		<!--end::Page title=-->
 		<!--begin::Wrapper-->
@@ -51,7 +51,7 @@
 						</div>
 					</div>
 					<!--end::Search toggle-->
-					
+
 				</div>
 				<!--end::Search-->
 			</div>
@@ -87,7 +87,7 @@
 					<!--end::Menu separator-->
 					<!--begin::Menu item-->
 					<div class="menu-item px-5">
-						<a href="account/overview.html" class="menu-link px-5">Perfil</a>
+						<a href="{{ route('show-user', Auth::user()->id) }}" class="menu-link px-5">Perfil</a>
 					</div>
 					<!--end::Menu item-->
 					<!--begin::Menu separator-->

@@ -4,6 +4,7 @@
     <div id="kt_aside_menu"
         class="menu menu-column menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold fs-5"
         data-kt-menu="true">
+        @if(Auth::User()->role == 'administrador')
         <div class="menu-item py-2">
             <a class="menu-link active menu-center" href="{{ route('home') }}" title="Panel" data-bs-toggle="tooltip"
                 data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
@@ -20,6 +21,13 @@
                 </span>
             </a>
         </div>
+        @else
+        <div class="menu-item py-2">
+            <a class="menu-link active menu-center" href="https://www.umss.edu.bo/" target="_blank" title="UMSS" data-bs-toggle="tooltip"
+                data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">UMSS</a>
+        </div>
+        @endif
+
         <div data-kt-menu-trigger="click" data-kt-menu-placement="right-start" data-kt-menu-flip="bottom"
             class="menu-item py-2">
             <span class="menu-link menu-center" title="Mi Perfil" data-bs-toggle="tooltip"
