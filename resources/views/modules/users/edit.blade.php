@@ -68,64 +68,85 @@
                             <div class="card card-flush">
                                 <div class="card-body pt-0">
                                     <form method="POST" action="{{ route('update-user', $user['id']) }}">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6">
-					<div class="fv-row mb-8 fv-plugins-icon-container">
-					    <label class="form-label fs-6 fw-bolder text-dark required">Nombre</label>
-                                                <input type="text" 
-                                                class="form-control"
-                                                name="name"
-                                                placeholder="Escribe tu nombre"
-                                                @if (old('name'))
-                                                value="{{ old('name') }}"
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="fv-row mb-8 fv-plugins-icon-container">
+                                                    <label
+                                                        class="form-label fs-6 fw-bolder text-dark required">Nombre</label>
+                                                    <input type="text" class="form-control" name="name"
+                                                        placeholder="Escribe tu nombre"
+                                                        @if (old('name')) value="{{ old('name') }}"
                                                 @elseif ($user['name'])
-                                                value="{{ $user['name'] }}"
-                                                @endif/>
-                                                @if ($errors->has('name'))
-                                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                                                @endif
-                                        </div>
-					<div class="fv-row mb-8 fv-plugins-icon-container">
-                                            <label class="form-label fs-6 fw-bolder text-dark required">Email</label>
-                                                <input type="email"
-                                                class="form-control"
-                                                name="email"
-                                                placeholder="Escribe tu correo electronico"
-                                                @if (old('email'))
-                                                value="{{ old('email') }}"
+                                                value="{{ $user['name'] }}" @endif />
+                                                    @if ($errors->has('name'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('name') }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="fv-row mb-8 fv-plugins-icon-container">
+                                                    <label
+                                                        class="form-label fs-6 fw-bolder text-dark required">Rol</label>
+                                                    <select class="form-control" name="role">
+                                                        <option value="">--Selecionar--</option>
+                                                        <option value='administrador'
+                                                        @if($user['role'] == 'administrador')
+                                                        selected
+                                                        @endif>Administrador</option>
+                                                        <option value="estudiante"
+                                                        @if($user['role'] == 'estudiante')
+                                                        selected
+                                                        @endif>Estudiante</option>
+                                                    </select>
+                                                    @if ($errors->has('role'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('role') }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="fv-row mb-8 fv-plugins-icon-container">
+                                                    <label
+                                                        class="form-label fs-6 fw-bolder text-dark required">Email</label>
+                                                    <input type="email" class="form-control" name="email"
+                                                        placeholder="Escribe tu correo electronico"
+                                                        @if (old('email')) value="{{ old('email') }}"
                                                 @elseif ($user['email'])
-                                                value="{{ $user['email'] }}"
-                                                @endif/>
-                                                @if ($errors->has('email'))
-                                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                                                @endif
+                                                value="{{ $user['email'] }}" @endif />
+                                                    @if ($errors->has('email'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('email') }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="fv-row mb-8 fv-plugins-icon-container">
+                                                    <label
+                                                        class="form-label fs-6 fw-bolder text-dark required">Contrase&#241a</label>
+                                                    <input type="password" class="form-control" name="password"
+                                                        placeholder="Escribe tu contrase&#241a" />
+                                                    @if ($errors->has('password'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('password') }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="fv-row mb-8 fv-plugins-icon-container">
+                                                    <label class="form-label fs-6 fw-bolder text-dark required">Repite
+                                                        la contrase&#241a</label>
+                                                    <input type="password" class="form-control" name="password"
+                                                        placeholder="Repite la contrase&#241a" />
+                                                    @if ($errors->has('password'))
+                                                        <span
+                                                            class="text-danger">{{ $errors->first('password') }}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
-					<div class="fv-row mb-8 fv-plugins-icon-container">
-                                            <label class="form-label fs-6 fw-bolder text-dark required">Contrase&#241a</label>
-                                                <input type="password" class="form-control" name="password" placeholder="Escribe tu contrase&#241a"/>
-                                                @if ($errors->has('password'))
-                                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                                                @endif
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6">
+                                                <a href="{{ route('home') }}" class="btn btn-danger">Cancelar</a>
+                                            </div>
                                         </div>
-					<div class="fv-row mb-8 fv-plugins-icon-container">
-                                            <label class="form-label fs-6 fw-bolder text-dark required">Repite la contrase&#241a</label>
-                                                <input type="password" class="form-control" name="password" placeholder="Repite la contrase&#241a"/>
-                                                @if ($errors->has('password'))
-                                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                                                @endif
-                                        </div>
-					</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6">
-                                            <button type="submit" class="btn btn-primary">Actualizar</button>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <a href="{{ route('home') }}" class="btn btn-danger">Cancelar</a>
-                                        </div>
-                                    </div>
                                     </form>
                                 </div>
                             </div>
