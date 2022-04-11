@@ -42,3 +42,7 @@ Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('destroy-u
 Route::get('/documents/index', [DocumentController::class, 'index'])->name('index-document')->middleware(['auth']);
 Route::get('/documents/create', [DocumentController::class, 'create'])->name('create-document')->middleware(['auth']);
 Route::post('/documents/create', [DocumentController::class, 'register_document'])->name('register-document')->middleware(['auth']);
+Route::get('/documents/edit/{id}', [DocumentController::class, 'edit'])->name('edit-document')->middleware(['auth']);
+Route::put('/documents/{id}', [DocumentController::class, 'update'])->name('update-document')->middleware(['auth']);
+Route::get('/documents/pdf/{id}', [DocumentController::class, 'generate_pdf'])->name('generate_pdf_document')->middleware(['auth']);
+Route::delete('/documents/{id}', [DocumentController::class, 'destroy'])->name('delete_pdf_document')->middleware(['auth']);
