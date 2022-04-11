@@ -12,7 +12,7 @@ function validateform(){
     }else if (email == null || email == ""){
         document.getElementById("messageEmail").innerHTML = "El campo correo no puede estar vacio";
         return false;
-    }else if (password.length < 8){
+    }else if (password.length >= 8 && password.length <= 32){
         document.getElementById("messagePassword").innerHTML = "Contraseña debe de tener por lo menos 8 caracteres";
         return false;
     }
