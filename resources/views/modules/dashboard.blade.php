@@ -66,7 +66,7 @@
                                         <!--end::Svg Icon-->
                                         <input type="text" data-kt-permissions-table-filter="search"
                                             class="form-control form-control-solid w-250px ps-15"
-                                            placeholder="Search Permissions">
+                                            placeholder="Buscar Usuario">
                                     </div>
                                     <!--end::Search-->
                                 </div>
