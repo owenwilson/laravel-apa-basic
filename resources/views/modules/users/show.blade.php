@@ -68,7 +68,7 @@
                                             <!--begin::Position-->
                                             <div class="mb-9">
                                                 <!--begin::Badge-->
-                                                <div class="badge badge-lg badge-light-primary d-inline">Rol
+                                                <div class="badge badge-lg badge-light-primary d-inline">{{ $user_show['role'] }}
                                                 </div>
                                                 <!--begin::Badge-->
                                             </div>
@@ -113,10 +113,10 @@
                                                 </div>
                                                 <!--begin::Details item-->
                                                 <!--begin::Details item-->
-                                                <div class="fw-bolder mt-5">Address</div>
-                                                <div class="text-gray-600">101 Collin Street,
-                                                    <br>Melbourne 3000 VIC
-                                                    <br>Australia
+                                                <div class="fw-bolder mt-5">Direcci&#243n</div>
+                                                <div class="text-gray-600">Cercado
+                                                    <br>Cochabamba
+                                                    <br>Bolivia
                                                 </div>
                                                 <!--begin::Details item-->
                                                 <!--begin::Details item-->
@@ -145,10 +145,10 @@
                                     </li>
                                     <!--end:::Tab item-->
                                     <!--begin:::Tab item-->
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
                                             href="#kt_user_view_overview_events_and_logs_tab">Events &amp; Logs</a>
-                                    </li>
+                                    </li> --}}
                                     <!--end:::Tab item-->
                                     <!--begin:::Tab item-->
                                     <li class="nav-item ms-auto">
@@ -198,11 +198,9 @@
                                                 <!--end::Card title-->
                                                 <!--begin::Card toolbar-->
                                                 <div class="card-toolbar">
-                                                    <button type="button" class="btn btn-light-primary btn-sm"
-                                                        data-bs-toggle="modal" data-bs-target="#kt_modal_add_schedule">
-                                                        <!--SVG file not found: media/icons/duotune/art/art008.svg-->
+                                                    <a href="{{ route('index-document') }}" type="button" class="btn btn-light-primary btn-sm">
                                                         Crear Nuevo Documento Apa
-                                                    </button>
+                                                    </a>
                                                 </div>
                                                 <!--end::Card toolbar-->
                                             </div>
@@ -222,18 +220,26 @@
                                                             </thead>
                                                             <tbody class="fw-bold text-gray-800">
                                                                 <tr>
-                                                                    <td class="text-center">1</td>
-                                                                    <td class="text-center">example1</td>
+                                                                    @foreach ($user_show->document as $index => $item)
+                                                                    <td class="text-center">{{ $index+1 }}</td>
+                                                                    <td class="text-center">{{ $item['title'] }}</td>
                                                                     <td class="text-center">
                                                                         <div class="btn btn-group">
-                                                                            <a href="#" class="btn btn-sm btn-outline-success">Ver</a>
-                                                                            <a href="#" class="btn btn-sm btn-outline-primary">Editar</a>
-                                                                            <form action="">
+                                                                            {{-- <a href="#" class="btn btn-sm btn-outline-success">Ver</a> --}}
+                                                                            <a href="{{ route('edit-document', $item['id']) }}" class="btn btn-sm btn-outline-primary">
+                                                                                Editar
+                                                                            </a>
+                                                                            <form method="POST" action="{{ route('delete_pdf_document', $item['id']) }}">
                                                                             @csrf
-                                                                                <a href="#" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                                                            @method('DELETE')
+                                                                                <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
                                                                             </form>
+                                                                            <a href="{{ route('generate_pdf_document', $item['id']) }}" target="_blank" class="btn btn-sm btn-outline-warning">
+                                                                                Imprimir
+                                                                            </a>
                                                                         </div>
                                                                     </td>
+                                                                    @endforeach
                                                                 </tr>
                                                             </tbody>
                                                         </table>
