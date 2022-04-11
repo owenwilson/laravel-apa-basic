@@ -33,7 +33,7 @@
                 <div class="w-lg-600px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto">
                     <!--begin::Form-->
                     <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
-                        novalidate="novalidate" id="kt_sign_up_form" 
+                        novalidate="novalidate" id="kt_sign_up_form"
                         action="{{ route('store') }}"
                         method="POST"
                         name="register"
@@ -58,9 +58,9 @@
                             <!--begin::Col-->
                             <!--<div class="col-xl-6">-->
                                 <label class="form-label fw-bolder text-dark fs-6">Nombre</label>
-                                <input class="form-control form-control-lg form-control-solid" 
+                                <input class="form-control form-control-lg form-control-solid"
                                     type="text"
-                                    placeholder="Nombre" 
+                                    placeholder="Nombre"
                                     name="name"
                                     autocomplete="off"
                                     value="{{ old('name') }}">
@@ -77,14 +77,29 @@
                             <label class="form-label fw-bolder text-dark fs-6">Correo Electronico</label>
                             <input class="form-control form-control-lg form-control-solid"
                                 type="email"
-                                placeholder="Correo Electronico" 
-                                name="email" 
+                                placeholder="Correo Electronico"
+                                name="email"
                                 autocomplete="off"
                                 value="{{ old('email') }}">
                             <span class="text-danger" id="messageEmail"></span>
                             @if ($errors->has('email'))
                             <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="fv-row mb-7 fv-plugins-icon-container">
+                            {{-- <label class="form-label fw-bolder text-dark fs-6">Correo Electronico</label> --}}
+                            <input class="form-control form-control-lg form-control-solid"
+                                type="text"
+                                placeholder="Correo Electronico"
+                                name="role"
+                                hidden
+                                value="estudiante">
+                            {{-- <span class="text-danger" id="messageEmail"></span> --}}
+                            {{-- @if ($errors->has('email'))
+                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif --}}
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
@@ -96,7 +111,7 @@
                                 <!--end::Label-->
                                 <!--begin::Input wrapper-->
                                 <div class="position-relative mb-3">
-                                    <input class="form-control form-control-lg form-control-solid" 
+                                    <input class="form-control form-control-lg form-control-solid"
                                         type="password"
                                         placeholder="Escribe tu Contraseña"
                                         name="password"
@@ -135,15 +150,6 @@
                             <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
                         </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <!-- <div class="fv-row mb-10 fv-plugins-icon-container">
-        <label class="form-check form-check-custom form-check-solid mb-5">
-         <input class="form-check-input" type="checkbox" name="toc" value="1">
-         <span class="form-check-label fw-bold text-gray-700 fs-6">I Agree &amp;
-         <a href="#" class="ms-1 link-primary">Terms and conditions</a>.</span>
-        </label>
-       <div class="fv-plugins-message-container invalid-feedback"></div></div> -->
                         <!--end::Input group-->
                         <!--begin::Actions-->
                         <div class="text-center">
