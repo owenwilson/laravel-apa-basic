@@ -122,7 +122,7 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="text-center">
-                                                    <a href="{{ route('home') }}" class="btn btn-danger">Cancelar</a>
+                                                    <a href="{{ route('index-document') }}" class="btn btn-danger">Cancelar</a>
                                                 </div>
                                             </div>
                                         </div>
