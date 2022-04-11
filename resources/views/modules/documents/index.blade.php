@@ -108,12 +108,15 @@
                                                     <td data-order="2022-06-20T20:43:00-04:00">{{ $list_documents['updated_at'] }}</td>
                                                     <td class="text-end">
                                                         <div class="btn-group">
-                                                            <a href="#" class="btn btn-primary btn-sm">Editar</a>
-                                                            <form method="POST" action="#">
+                                                            <a href="{{ route('edit-document', $list_documents['id']) }}" class="btn btn-primary btn-sm">Editar</a>
+                                                            <form method="POST" action="{{ route('delete_pdf_document', $list_documents['id']) }}">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                                                        </form>
+                                                            </form>
+                                                        <a href="{{ route('generate_pdf_document', $list_documents['id']) }}" target="_blank" class="btn btn-success btn-sm">
+                                                            Imprimir
+                                                        </a>
                                                         </div>
                                                     </td>
                                                 </tr>
