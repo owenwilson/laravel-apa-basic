@@ -127,7 +127,7 @@
                                                     <td>{{ $user['name'] }}</td>
                                                     <td>
                                                         <a href="#" class="badge badge-light-primary fs-7 m-1">
-                                                            {{ $user['name'] }}
+                                                            {{ $user['role'] }}
                                                         </a>
                                                     </td>
                                                     <td data-order="2022-06-20T20:43:00-04:00">{{ $user['created_at'] }}</td>
