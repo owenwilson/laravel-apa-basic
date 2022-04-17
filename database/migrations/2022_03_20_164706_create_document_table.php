@@ -16,8 +16,12 @@ class CreateDocumentTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('author');
+            $table->date('date_document');
+            $table->string('institution');
             $table->longText('content');
-            $table->string('footer');
+            $table->text('table_index');
+            $table->longText('bibliography');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
