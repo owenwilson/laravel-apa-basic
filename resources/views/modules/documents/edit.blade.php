@@ -92,10 +92,83 @@
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="text-center">
+                                                    <div class="fv-row mb-8 fv-plugins-icon-container">
+                                                        <label
+                                                            class="form-label fs-6 fw-bolder text-dark required">AUTOR</label>
+                                                        <input type="text" class="form-control" name="author"
+                                                            placeholder="Nombre Autor"
+                                                            @if($document_edit['author'])
+                                                            value="{{ $document_edit['author'] }}"
+                                                            @else
+                                                            value="{{ old('author') }}"
+                                                            @endif/>
+                                                        @if ($errors->has('author'))
+                                                            <span
+                                                                class="text-danger">{{ $errors->first('author') }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="text-center">
+                                                    <div class="fv-row mb-8 fv-plugins-icon-container">
+                                                        <label
+                                                            class="form-label fs-6 fw-bolder text-dark required">FECHA</label>
+                                                        <input type="date" class="form-control" name="date_document"
+                                                        @if($document_edit['date_document'])
+                                                        value="{{ $document_edit['date_document'] }}"
+                                                        @else
+                                                        value="{{ old('date_document') }}"
+                                                        @endif/>
+                                                        @if ($errors->has('date_document'))
+                                                            <span
+                                                                class="text-danger">{{ $errors->first('date_document') }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="text-center">
+                                                    <div class="fv-row mb-8 fv-plugins-icon-container">
+                                                        <label
+                                                            class="form-label fs-6 fw-bolder text-dark required">INSTITUCION</label>
+                                                        <input type="text" class="form-control" name="institution"
+                                                            placeholder="Nombre de la institucion"
+                                                            @if($document_edit['institution'])
+                                                            value="{{ $document_edit['institution']}}"
+                                                            @else
+                                                            value="{{ old('institution') }}"
+                                                            @endif/>
+                                                        @if ($errors->has('institution'))
+                                                            <span
+                                                                class="text-danger">{{ $errors->first('institution') }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="fv-row mb-8 fv-plugins-icon-container">
                                                     <label
-                                                        class="form-label fs-6 fw-bolder text-dark required">TEXTO</label>
+                                                        class="form-label fs-6 fw-bolder text-dark required">INDICE DE TABLA</label>
+                                                    <textarea type="text" class="form-control" id="textarea" rows="3"
+                                                        name="table_index" placeholder="Ejemplo: Los Algoritmos, Los Programadores">{{ old('table_index') ? old('table_index'):$document_edit['table_index'] }}</textarea>
+                                                    @if ($errors->has('table_index'))
+                                                        <span class="text-danger">{{ $errors->first('table_index') }}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="fv-row mb-8 fv-plugins-icon-container">
+                                                    <label
+                                                        class="form-label fs-6 fw-bolder text-dark required">RESUMEN O ABSTRACT</label>
                                                     <textarea type="text" class="form-control" id="textarea" rows="20"
                                                         name="content" placeholder="Escribe tu investigacion">{{ old('content') ? old('content'):$document_edit['content'] }}</textarea>
                                                     @if ($errors->has('content'))
@@ -106,22 +179,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12">
-                                                <div class="text-center">
-                                                    <div class="fv-row mb-8 fv-plugins-icon-container">
-                                                        <label
-                                                            class="form-label fs-6 fw-bolder text-dark required">PIE DE PAGINA</label>
-                                                        <input type="text" class="form-control" name="footer"
-                                                            placeholder="Escribe el pie de pagina"
-                                                            @if($document_edit['footer'])
-                                                            value="{{ $document_edit['footer'] }}"
-                                                            @else
-                                                            value="{{ old('footer') }}" />
-                                                            @endif
-                                                        @if ($errors->has('footer'))
-                                                            <span
-                                                                class="text-danger">{{ $errors->first('footer') }}</span>
-                                                        @endif
-                                                    </div>
+                                                <div class="fv-row mb-8 fv-plugins-icon-container">
+                                                    <label
+                                                        class="form-label fs-6 fw-bolder text-dark required">BIBLIOGRAFIA</label>
+                                                    <textarea type="text" class="form-control" id="textarea" rows="8"
+                                                        name="bibliography" placeholder="Agrega las bibliografias">{{ old('bibliography') ? old('bibliography'):$document_edit['bibliography'] }}</textarea>
+                                                    @if ($errors->has('bibliography'))
+                                                        <span class="text-danger">{{ $errors->first('bibliography') }}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -5,45 +5,99 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- <link rel="stylesheet" href="{{ URL::asset('assets/pdf/pdf.css') }}"> --}}
+    <link rel="stylesheet" href="{{ public_path('assets/css/bootstrap.css') }}" type="text/css">
     <title>Document</title>
 </head>
-<style>
-    .row {
-      margin-right: -15px;
-      margin-left: -15px;
-    }
-    .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-      position: relative;
-      min-height: 1px;
-      padding-right: 15px;
-      padding-left: 15px;
-    }
-
-    .col-lg-12 {
-        width: 100%;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    body {
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: 12px;
-      line-height: 1.42857143;
-      color: #333;
-      background-color: #fff;
-    }
-</style>
 <body>
-    <h1>{{ $title }}</h1>
-    <p>{{ $content }}</p>
-    {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> --}}
+    <div class="container" style="line-height: 2.5;">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="text-center">
+                <p class="text-uppercase">
+                    <strong>
+                    {{ $title}}
+                    </strong>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mx-auto" style="max-width: 600px; min-height: 600px;">
+            
+        </div>
+    </div>
+    <div class="row">    
+        <div class="text-center">
+            <p>{{ $author }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            <p>{{ $date_document }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            <p class="text-uppercase">
+                {{ $institution }}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mx-auto" style="max-width: 110px; min-height: 110px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            {{-- <p>{{ $footer }}</p> --}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="mx-auto" style="max-width: 50px; min-height:50px;">
+        </div>
+    </div>
+    </div>
+
+    {{-- INDICE --}}
+    <div class="row">
+        <p>INDICE DE TABLA</p>
+        <ol>
+            <?php
+            $test = explode(",", $table_index);
+            foreach ($test as $key => $value) {
+                echo '<li class="text-uppercase">',$value,'</li>';
+            }?>
+        </ol>
+    </div>
+    <div class="row pt-5" >
+        <?php
+        $sizeBlock = explode(",", $table_index);
+        if(count($sizeBlock) == 1 || count($sizeBlock) == 2 || count($sizeBlock) == 3 || count($sizeBlock) == 4){
+            echo '<div class="mx-auto" style="max-width: 950px; min-height: 950px;"></div>';
+        }else if(count($sizeBlock) == 5 || count($sizeBlock) == 6 || count($sizeBlock) == 7 || count($sizeBlock) == 8 || count($sizeBlock) == 9){
+            echo '<div class="mx-auto" style="max-width: 850px; min-height: 850px;"></div>';
+        }else{
+            echo '<div class="mx-auto" style="max-width: 700px; min-height: 700px;"></div>';
+        };
+        ?>
+    </div>
+
+    {{-- RESUMEN --}}
+    <div class="row">
+        <div class="text-center">
+            <p class="text-uppercase"><strong>RESUMEN</strong></p>
+        </div>
+    </div>
+    <div class="row ms-5 me-5">
+        {{-- <div class="d-flex justify-content-center"> --}}
+            <p style="line-height: 2.7;">{{ $content }}</p>
+        {{-- </div> --}}
+    </div>
+    <br>
+    {{-- BIBLIOGRAFIAS --}}
+    <div class="row">
+        <p class="text-uppercase"><strong>Bibliografias</strong></p>
+        <p style="line-height: 2.7;">{{ $bibliography }}</p>
+    </div>
 </body>
 </html>
