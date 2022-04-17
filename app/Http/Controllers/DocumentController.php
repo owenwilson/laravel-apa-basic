@@ -24,8 +24,12 @@ class DocumentController extends Controller
     public function register_document(Request $request){
         $request->validate([
             'title' => 'required',
+            'author' => 'required',
+            'date_document' => 'required',
+            'institution' => 'required',
             'content' => 'required',
-            'footer' => 'required'
+            'table_index' => 'required',
+            'bibliography' => 'required'
         ]);
 
         $data_form_document = $request->all();
@@ -36,8 +40,12 @@ class DocumentController extends Controller
     public function store_database(array $data){
         return Document::create([
             'title' => $data['title'],
+            'author' => $data['author'],
+            'date_document' => $data['date_document'],
+            'institution' => $data['institution'],
             'content' => $data['content'],
-            'footer' => $data['footer'],
+            'table_index' => $data['table_index'],
+            'bibliography' => $data['bibliography'],
             'user_id' => auth()->user()->id
         ]);
     }
@@ -50,13 +58,22 @@ class DocumentController extends Controller
         $document_data = Document::findOrFail($id);
         $request->validate([
             'title' => 'required',
+            'author' => 'required',
+            'date_document' => 'required',
+            'institution' => 'required',
             'content' => 'required',
-            'footer' => 'required',
+            'table_index' => 'required',
+            'bibliography' => 'required',
         ]);
 
         $document_data->title = $request['title'];
+        $document_data->author = $request['author'];
+        $document_data->date_document = $request['date_document'];
+        $document_data->institution = $request['institution'];
         $document_data->content = $request['content'];
-        $document_data->footer = $request['footer'];
+        $document_data->table_index = $request['table_index'];
+        $document_data->bibliography = $request['bibliography'];
+        $document_data->user_id = auth()->user()->id;
         $document_data->update();
 
         return redirect()->route('index-document')->with('success', 'Documento actualizado correctamente');
@@ -73,8 +90,10 @@ class DocumentController extends Controller
         header('Content-type: application/pdf');
         header('Content-Disposition: inline; filename="example.pdf"');
         header('Content-Transfer-Encoding: binary');
+        $dompdf = new Dompdf();
+        $dompdf->setPaper('A4', 'landscape');
         $document_id_user = Document::findOrFail($id)->toArray();
-        $pdf = PDF::loadView('modules.documents.pdf', $document_id_user);
-        return $pdf->stream('example.pdf');
+        $dompdf = PDF::loadView('modules.documents.pdf', $document_id_user);
+        return $dompdf->stream('example.pdf');
     }
 }
