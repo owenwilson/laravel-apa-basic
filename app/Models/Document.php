@@ -11,8 +11,12 @@ class Document extends Model
 
     protected $fillable = [
         'title',
+        'author',
+        'date_document',
+        'institution',
+        'table_index',
+        'bibliography',
         'content',
-        'footer',
         'user_id'
     ];
 
