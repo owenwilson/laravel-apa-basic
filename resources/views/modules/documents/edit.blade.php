@@ -65,6 +65,11 @@
                             </div>
                             <!--end::Card header-->
                             <!--begin::Card body-->
+                            {{-- @if ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div>{{$error}}</div>
+                                @endforeach
+                            @endif --}}
                             <div class="card card-flush">
                                 <div class="card-body pt-0">
                                     <form method="POST" action="{{ route('update-document', $document_edit['id']) }}">
@@ -97,16 +102,16 @@
                                                     <div class="fv-row mb-8 fv-plugins-icon-container">
                                                         <label
                                                             class="form-label fs-6 fw-bolder text-dark required">AUTOR</label>
-                                                        <input type="text" class="form-control" name="author"
+                                                        <input type="text" class="form-control" name="researcher"
                                                             placeholder="Nombre Autor"
-                                                            @if($document_edit['author'])
-                                                            value="{{ $document_edit['author'] }}"
+                                                            @if($document_edit['researcher'])
+                                                            value="{{ $document_edit['researcher'] }}"
                                                             @else
-                                                            value="{{ old('author') }}"
+                                                            value="{{ old('researcher') }}"
                                                             @endif/>
-                                                        @if ($errors->has('author'))
+                                                        @if ($errors->has('researcher'))
                                                             <span
-                                                                class="text-danger">{{ $errors->first('author') }}</span>
+                                                                class="text-danger">{{ $errors->first('researcher') }}</span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -180,13 +185,20 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="fv-row mb-8 fv-plugins-icon-container">
-                                                    <label
-                                                        class="form-label fs-6 fw-bolder text-dark required">BIBLIOGRAFIA</label>
-                                                    <textarea type="text" class="form-control" id="textarea" rows="8"
-                                                        name="bibliography" placeholder="Agrega las bibliografias">{{ old('bibliography') ? old('bibliography'):$document_edit['bibliography'] }}</textarea>
-                                                    @if ($errors->has('bibliography'))
-                                                        <span class="text-danger">{{ $errors->first('bibliography') }}</span>
-                                                    @endif
+                                                    <div class="container1">
+                                                        <label class="form-label fs-6 fw-bolder text-dark required">Bibliografia</label>
+                                                        <button class="add_form_field btn btn-sm btn-primary">Agregar Nuevo Campo &nbsp;
+                                                          <span style="font-size:16px; font-weight:bold;">+ </span>
+                                                        </button>
+                                                        @foreach ($document_edit->bibliographies as $item)
+                                                        <input class="form-control" type="text" name="author[]" placeholder="Autor" value="{{ $item['author'] }}">
+                                                        <input class="form-control" type="text" name="title_author[]" placeholder="Titulo" value="{{ $item['title'] }}">
+                                                        <input class="form-control" type="number" name="year[]" placeholder="Año" value="{{ $item['year'] }}">
+                                                        <input class="form-control" type="text" name="city[]" placeholder="Ciudad" value="{{ $item['city'] }}">
+                                                        <input class="form-control" type="text" name="editorial[]" placeholder="Editorial" value="{{ $item['editorial'] }}">
+                                                        <br>
+                                                        @endforeach
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

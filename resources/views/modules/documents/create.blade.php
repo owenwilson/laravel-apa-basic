@@ -91,11 +91,11 @@
                                                     <div class="fv-row mb-8 fv-plugins-icon-container">
                                                         <label
                                                             class="form-label fs-6 fw-bolder text-dark required">AUTOR</label>
-                                                        <input type="text" class="form-control" name="author"
-                                                            placeholder="Nombre Autor" value="{{ old('author') }}" />
-                                                        @if ($errors->has('author'))
+                                                        <input type="text" class="form-control" name="researcher"
+                                                            placeholder="Nombre Autor" value="{{ old('researcher') }}" />
+                                                        @if ($errors->has('researcher'))
                                                             <span
-                                                                class="text-danger">{{ $errors->first('author') }}</span>
+                                                                class="text-danger">{{ $errors->first('researcher') }}</span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -105,7 +105,7 @@
                                                     <div class="fv-row mb-8 fv-plugins-icon-container">
                                                         <label
                                                             class="form-label fs-6 fw-bolder text-dark required">FECHA</label>
-                                                        <input type="date" class="form-control" name="date_document" />
+                                                        <input type="date" class="form-control" name="date_document" value="{{ old('date_document') }}" />
                                                         @if ($errors->has('date_document'))
                                                             <span
                                                                 class="text-danger">{{ $errors->first('date_document') }}</span>
@@ -137,7 +137,7 @@
                                                         class="form-label fs-6 fw-bolder text-dark required">INDICE DE TABLA</label>
                                                     <textarea type="text" class="form-control" id="textarea" rows="3"
                                                         name="table_index" placeholder="Ejemplo: Los Algoritmos, Los Programadores"
-                                                        value="{{ old('table_index') }}"></textarea>
+                                                        >{{ old('table_index') ? old('table_index'):'' }}</textarea>
                                                     @if ($errors->has('table_index'))
                                                         <span class="text-danger">{{ $errors->first('table_index') }}</span>
                                                     @endif
@@ -150,7 +150,7 @@
                                                     <label
                                                         class="form-label fs-6 fw-bolder text-dark required">RESUMEN O ABSTRACT</label>
                                                     <textarea type="text" class="form-control" id="textarea" rows="20"
-                                                        name="content" placeholder="Escribe tu investigacion" value="{{ old('content') }}"></textarea>
+                                                        name="content" placeholder="Escribe tu investigacion">{{ old('content') ? old('content'):'' }}</textarea>
                                                     @if ($errors->has('content'))
                                                         <span class="text-danger">{{ $errors->first('content') }}</span>
                                                     @endif
@@ -160,17 +160,22 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="fv-row mb-8 fv-plugins-icon-container">
-                                                    <label
-                                                        class="form-label fs-6 fw-bolder text-dark required">BIBLIOGRAFIA</label>
-                                                    <textarea type="text" class="form-control" id="textarea" rows="8"
-                                                        name="bibliography" placeholder="Agrega las bibliografias" value="{{ old('bibliography') }}"></textarea>
-                                                    @if ($errors->has('bibliography'))
-                                                        <span class="text-danger">{{ $errors->first('bibliography') }}</span>
-                                                    @endif
+                                                    <div class="container1">
+                                                        <label class="form-label fs-6 fw-bolder text-dark required">Bibliografia</label>
+                                                        <button class="add_form_field btn btn-sm btn-primary">Agregar Nuevo Campo &nbsp;
+                                                          <span style="font-size:16px; font-weight:bold;">+ </span>
+                                                        </button>
+                                                        <input class="form-control" type="text" name="author[]" placeholder="Autor" value="{{ old('author.0') }}">
+                                                        <input class="form-control" type="text" name="title_author[]" placeholder="Titulo" value="{{ old('title_author.0') }}">
+                                                        <input class="form-control" type="number" name="year[]" placeholder="Año" value="{{ old('year.0') }}">
+                                                        <input class="form-control" type="text" name="city[]" placeholder="Ciudad" value="{{ old('city.0') }}">
+                                                        <input class="form-control" type="text" name="editorial[]" placeholder="Editorial" value="{{ old('editorial.0') }}">
+                                                        <br>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="text-center">

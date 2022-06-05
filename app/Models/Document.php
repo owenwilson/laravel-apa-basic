@@ -11,11 +11,10 @@ class Document extends Model
 
     protected $fillable = [
         'title',
-        'author',
+        'researcher',
         'date_document',
         'institution',
         'table_index',
-        'bibliography',
         'content',
         'user_id'
     ];
@@ -23,4 +22,12 @@ class Document extends Model
     public function users(){
         return $this->belongsTo(User::class);
     }
+
+    public function bibliographies(){
+        return $this->HasMany(Bibliography::class);
+    }
+
+    // public function document(){
+    //     return $this->hasMany(Document::class);
+    // }
 }
