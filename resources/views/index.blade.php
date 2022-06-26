@@ -76,7 +76,7 @@
                     <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-11 order-lg-1 order-1" data-aos="fade-right"
                         data-aos-duration="800" data-aos-once="true">
                         <div class="content text-center">
-                            <h1>CREA TU DOCUMENTO CON NORMA APP!</h1>
+                            <h1>CREA TU DOCUMENTO CON NORMA APA!</h1>
                             <p>Este sitio web fue creado para que puedas crear tu documento de investigacion con norma APA.</p>
                             <a href="{{ route('sign-up') }}" class="btn">Registrate</a>
                             <span>completamente gratis</span>

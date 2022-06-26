@@ -173,7 +173,7 @@
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="fv-row mb-8 fv-plugins-icon-container">
                                                     <label
-                                                        class="form-label fs-6 fw-bolder text-dark required">RESUMEN O ABSTRACT</label>
+                                                        class="form-label fs-6 fw-bolder text-dark required">RESUMEN</label>
                                                     <textarea type="text" class="form-control" id="textarea" rows="20"
                                                         name="content" placeholder="Escribe tu investigacion">{{ old('content') ? old('content'):$document_edit['content'] }}</textarea>
                                                     @if ($errors->has('content'))
