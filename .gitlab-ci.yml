@@ -5,7 +5,7 @@ stages:
 build_project:
   stage: build
   only:
-    - develop
+    - main
   script:
     - docker-compose -f stage-dev.yml build
   tags:
@@ -14,7 +14,7 @@ build_project:
 deploy_project:
   stage: deploy
   only:
-    - develop
+    - main
   script:
     - docker-compose -f stage-dev.yml up -d
     - sleep 10
