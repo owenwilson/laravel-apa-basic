@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+  apadbumss:
+    hostname: dbapa
+    container_name: dbapa
+    image: mysql
+    restart: always
+      #ports:
+      #- "3306:3306"
+      #"3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: apadb
+      MYSQL_DATABASE: apadb
+    networks:
+      - "apanetwork"
+
+  apawebumss:
+    build:
+      args:
+        user: user
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile.dev
+    image: apa/development:latest
+    hostname: apawebap
+    container_name: apawebapp
+    restart: unless-stopped
+#    environment:
+#      VIRTUAL_HOST: "agenalexport.ml"
+#      LETSENCRYPT_HOST: "agenalexport.ml"
+    ports:
+      - "8888:8000"
+    command: bash -c "
+      composer install 
+      && php artisan serve --host 0.0.0.0
+      "
+    networks:
+      - "apanetwork"
+
+networks:
+  apanetwork:
+    driver: bridge
+    external: false

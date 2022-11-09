@@ -1,0 +1,6 @@
+#Image Ubuntu 18
+FROM owenwilson/laravel8:latest
+RUN apt update && apt install php8.0-mysql -y
+COPY ./ /var/www
+RUN mv /var/www/.env.dev /var/www/.env
+CMD php artisan serve --host=0.0.0.0 --port=8000
