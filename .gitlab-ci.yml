@@ -1,5 +1,6 @@
 stages:
   - build
+  - test
   - deploy
 
 build_project:
@@ -8,6 +9,15 @@ build_project:
     - main
   script:
     - docker-compose -f stage-dev.yml build
+  tags:
+    - apaweb
+
+test_project:
+  stage: test
+  only:
+    - main
+  script:
+    - curl https://sonarqube-agenal.ml/
   tags:
     - apaweb
 
